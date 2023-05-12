@@ -9,7 +9,7 @@
 
 ## About Laravel
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+Membuat sistem informasi Tata Naskah pada Museum Pusat TNI AU Dirgantara mandala berbasis Web sebagai Tugas Akhir / Skripsi. Judul Skripsi : ANALISA KORELASI PERANGKAT LUNAK TATA NASKAH (TAKAH) BERBASIS WEBSITE PADA MUSEUM PUSAT TNI AU DIRGANTARA MANDALA
 
 - [Simple, fast routing engine](https://laravel.com/docs/routing).
 - [Powerful dependency injection container](https://laravel.com/docs/container).
