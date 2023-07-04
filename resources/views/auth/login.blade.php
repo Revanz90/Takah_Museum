@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>AdminLTE 3 | Log in (v2)</title>
+    <title>Login</title>
 
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet"
@@ -23,6 +23,7 @@
         <div class="card card-outline card-dark">
             <div class="card-header text-center">
                 <a href="../../index2.html" class="h1">TAKAH<b>MUSEUM</b></a>
+                @include('app-layout/alert')
             </div>
             <div class="card-body">
                 <p class="login-box-msg">Log in to start your session</p>
@@ -30,7 +31,7 @@
                 <form action="{{ route('login') }}" method="post">
                     @csrf
                     <div class="input-group mb-3">
-                        <input type="email" class="form-control" placeholder="Email" name="email">
+                        <input type="text" class="form-control" placeholder="Email" name="email">
                         <div class="input-group-append">
                             <div class="input-group-text">
                                 <span class="fas fa-envelope"></span>
@@ -54,16 +55,24 @@
                                 </label>
                             </div>
                         </div>
-                        <!-- /.col -->
                         <div class="col-6">
                             <button type="submit" class="btn btn-primary btn-block">Log In</button>
                         </div>
-                        <!-- /.col -->
+                    </div>
+
+                    <div class="row">
+                        <div class="col-6">
+                            <p class="mb-1 mt-1">
+                                <a href="forgot-password.blade.php">Forgot Password</a>
+                            </p>
+                        </div>
+                        <div class="col-8">
+                            <p class="mb-1 mt-1">
+                                <a href="{{ route('daftar') }}" class="text-center">Register</a>
+                            </p>
+                        </div>
                     </div>
                 </form>
-                <p class="mb-1 mt-2">
-                    <a href="forgot-password.html">Forgot Password</a>
-                </p>
             </div>
         </div>
     </div>
