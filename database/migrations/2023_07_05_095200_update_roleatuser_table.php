@@ -11,11 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('file_surat_masuks', function (Blueprint $table) {
-            $table->id();
-            $table->string('files');
-            $table->unsignedBigInteger('id_suratmasuk');
-            $table->timestamps();
+        Schema::table('users', function (Blueprint $table) {
+            $table->foreign('role')->references('id')->on('roles');
         });
     }
 
@@ -24,6 +21,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('file_surat_masuks');
+        //
     }
 };

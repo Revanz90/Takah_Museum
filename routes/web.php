@@ -6,7 +6,6 @@ use App\Http\Controllers\DaftarController;
 use App\Http\Controllers\DetailSuratMasukController;
 use App\Http\Controllers\DisposisiController;
 use App\Http\Controllers\DitakahkanController;
-use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SuratKeluarController;
 use App\Http\Controllers\SuratMasukController;
 use Illuminate\Support\Facades\Route;
@@ -30,16 +29,6 @@ Route::get('/', function () {
     return view('auth.login');
 });
 
-Route::get('/surat_masuk', [SuratMasukController::class, 'suratmasuk'])->name('suratmasuk');
-// Route::resource('/surat_masuk', '');
-// Route::post('/surat_masuk', [SuratMasukController::class, 'store'])->name('store');
-
-Route::get('/surat_keluar', [SuratKeluarController::class, 'suratkeluar'])->name('suratkeluar');
-Route::get('/ditakahkan', [DitakahkanController::class, 'ditakahkan'])->name('ditakahkan');
-Route::get('/disposisi', [DisposisiController::class, 'disposisi'])->name('disposisi');
-Route::get('/action_disposisi', [ActionDisposisiController::class, 'action'])->name('action_disposisi');
-Route::get('/detail_suratmasuk', [DetailSuratMasukController::class, 'detailsuratmasuk'])->name('detail_suratmasuk');
-
 Route::get('akun', [AkunController::class, 'akun'])->name('akun');
 Route::get('/daftar', [DaftarController::class, 'daftar'])->name('daftar');
 
@@ -47,6 +36,16 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+
+    Route::get('/surat_masuk', [SuratMasukController::class, 'suratmasuk'])->name('suratmasuk');
+    Route::post('/surat_masuk', [SuratMasukController::class, 'store'])->name('storesuratmasuk');
+    Route::get('/detail_suratmasuk', [DetailSuratMasukController::class, 'detailsuratmasuk'])->name('detail_suratmasuk');
+
+    Route::get('/surat_keluar', [SuratKeluarController::class, 'suratkeluar'])->name('suratkeluar');
+    Route::get('/ditakahkan', [DitakahkanController::class, 'ditakahkan'])->name('ditakahkan');
+    Route::get('/disposisi', [DisposisiController::class, 'disposisi'])->name('disposisi');
+    Route::get('/action_disposisi', [ActionDisposisiController::class, 'action'])->name('action_disposisi');
+
 });
 
 require __DIR__ . '/auth.php';

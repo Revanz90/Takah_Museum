@@ -11,6 +11,19 @@
             <i class="fas fa-info-circle"></i>
             Halaman untuk melihat dan menambah surat masuk
         </div>
+        @if ($message = Session::get('success'))
+            <div class="alert alert-success alert-block">
+                <button type="button" class="close" data-dismiss="alert">×</button>
+                <strong>{{ $message }}</strong>
+            </div>
+        @endif
+
+        @if ($message = Session::get('error'))
+            <div class="alert alert-danger alert-block">
+                <button type="button" class="close" data-dismiss="alert">×</button>
+                <strong>{{ $message }}</strong>
+            </div>
+        @endif
         <div class="card">
             <!-- Navbar Content -->
             <div class="card-header">
@@ -42,28 +55,30 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>2023-02-17 14:01:38</td>
-                            <td>Institud Teknologi Dirgantara Adisutjipto</td>
-                            <td>B/49-08/06/04/IF/ITDA</td>
-                            <td>Surat izin penelitian</td>
-                            <td>Melakukan penelitian selama 2 bulan, Februari-Maret</td>
-                            <td class="project-state text-center">
-                                <span class="badge badge-success">Diterima</span>
-                                <a class="btn btn-info btn-xs" href=" {{ route('detail_suratmasuk') }}">
-                                    <i class="fas fa-folder">
-                                    </i>
-                                    Lihat
-                                </a>
-                                <a class="btn btn-primary btn-xs mt-2" href=" {{ route('ditakahkan') }}">
-                                    <i class="fas fa-folder">
-                                    </i>
-                                    Takahkan
-                                </a>
-                            </td>
-                            </td>
-                        </tr>
+                        @foreach ($datasm as $data)
+                            <tr>
+                                <td>{{ $data->id }}</td>
+                                <td>{{ $data->created_at }}</td>
+                                <td>{{ $data->dari }}</td>
+                                <td>{{ $data->no_surat }}</td>
+                                <td>{{ $data->perihal }}</td>
+                                <td>{{ $data->keterangan }}</td>
+                                <td class="project-state text-center">
+                                    <span class="badge badge-success">Diterima</span>
+                                    <a class="btn btn-info btn-xs" href=" {{ route('detail_suratmasuk') }}">
+                                        <i class="fas fa-folder">
+                                        </i>
+                                        Lihat
+                                    </a>
+                                    <a class="btn btn-primary btn-xs mt-2" href=" {{ route('ditakahkan') }}">
+                                        <i class="fas fa-folder">
+                                        </i>
+                                        Takahkan
+                                    </a>
+                                </td>
+                                </td>
+                            </tr>
+                        @endforeach
                     </tbody>
                 </table>
             </div>
@@ -90,8 +105,9 @@
                             </div>
                             <!-- /Navbar Content -->
                             <!-- Page Content -->
-                            <form action="" enctype="multipart/form-data" method="POST" class="form-horizontal">
-                                {{-- {{ @csrf_field }} --}}
+                            <form action="" enctype="multipart/form-data" method="POST" class="form-horizontal"
+                                id="suratmasukform">
+                                {{ csrf_field() }}
                                 <div class="card-body">
                                     <div class="col-sm-12">
                                         <div class="card">
@@ -101,7 +117,7 @@
                                                     <label for=""
                                                         class="col-sm-2 col-form-label font-weight-normal">No. Surat</label>
                                                     <div class="col-sm-10">
-                                                        <input type="text" name="" class="form-control">
+                                                        <input type="text" name="no_surat" class="form-control">
                                                     </div>
                                                 </div>
 
@@ -109,7 +125,7 @@
                                                     <label for=""
                                                         class="col-sm-2 col-form-label font-weight-normal">Dari</label>
                                                     <div class="col-sm-10">
-                                                        <input type="text" name="" class="form-control">
+                                                        <input type="text" name="dari" class="form-control">
                                                     </div>
                                                 </div>
 
@@ -117,7 +133,7 @@
                                                     <label for=""
                                                         class="col-sm-2 col-form-label font-weight-normal">Tanggal</label>
                                                     <div class="col-sm-10">
-                                                        <input type="date" name="" class="form-control">
+                                                        <input type="date" name="tanggal" class="form-control">
                                                     </div>
                                                 </div>
 
@@ -126,7 +142,7 @@
                                                         class="col-sm-2 col-form-label font-weight-normal">Perihal
                                                     </label>
                                                     <div class="col-sm-10">
-                                                        <input type="text" name="" class="form-control">
+                                                        <input type="text" name="perihal" class="form-control">
                                                     </div>
                                                 </div>
 
@@ -135,17 +151,17 @@
                                                         class="col-sm-2 col-form-label font-weight-normal">Keterangan
                                                     </label>
                                                     <div class="col-sm-10">
-                                                        <input type="text" name="" class="form-control">
+                                                        <input type="text" name="keterangan" class="form-control">
                                                     </div>
                                                 </div>
 
                                                 <div class="form-group row">
                                                     <label for="proposal_ProposalTA"
-                                                        class="col-sm-2 col-form-label font-weight-normal">Input Surat
+                                                        class="col-sm-2 col-form-label font-weight-normal">Upload Surat
                                                         Masuk(.pdf)</label>
                                                     <div class="col-sm-10">
-                                                        <input type="file" name="Input_SuratMasuk" class="form-control"
-                                                            required>
+                                                        <input type="file" name="Input_SuratMasuk"
+                                                            class="form-control" required>
                                                     </div>
                                                 </div>
 
@@ -164,7 +180,8 @@
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                     <div class="btn-savechange-reset">
                         <button type="reset" class="btn btn-sm btn-warning" style="margin-right: 5px">Reset</button>
-                        <button type="button" class="btn btn-primary">Submit</button>
+                        <button type="submit" form="suratmasukform" value="Submit"
+                            class="btn btn-primary">Submit</button>
                     </div>
                 </div>
             </div>

@@ -14,9 +14,11 @@
                 <img src="{{ asset('AdminLTE/dist') }}/img/user2-160x160.jpg" class="img-circle elevation-2"
                     alt="User Image">
             </div>
+            {{-- @foreach ($useractive as $username) --}}
             <div class="info">
-                <a href="{{ route('profile.edit') }}" class="d-block">Revanza Marsapala</a>
+                <a href="" class="d-block">Revanza</a>
             </div>
+            {{-- @endforeach --}}
         </div>
 
         <!-- Sidebar Menu -->

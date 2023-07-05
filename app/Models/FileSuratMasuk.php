@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class SuratMasuk extends Model
+class FileSuratMasuk extends Model
 {
     use HasFactory;
 }
