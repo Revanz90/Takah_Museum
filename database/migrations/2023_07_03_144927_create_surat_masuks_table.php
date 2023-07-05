@@ -18,7 +18,10 @@ return new class extends Migration
             $table->string('perihal');
             $table->string('keterangan');
             $table->enum('status', ['diterima', 'ditolak']);
+            $table->unsignedBigInteger('author_id');
             $table->timestamps();
+
+            $table->foreign('author_id')->references('id')->on('users');
         });
     }
 
