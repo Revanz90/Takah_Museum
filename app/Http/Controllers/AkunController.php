@@ -6,6 +6,6 @@ class AkunController extends Controller
 {
     public function akun()
     {
-        return view('layouts.akun');
+        return view('app-layout.akun');
     }
 }

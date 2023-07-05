@@ -40,8 +40,7 @@ Route::get('/disposisi', [DisposisiController::class, 'disposisi'])->name('dispo
 Route::get('/action_disposisi', [ActionDisposisiController::class, 'action'])->name('action_disposisi');
 Route::get('/detail_suratmasuk', [DetailSuratMasukController::class, 'detailsuratmasuk'])->name('detail_suratmasuk');
 
-Route::get('/akun', [AkunController::class, 'akun'])->name('akun');
-
+Route::get('akun', [AkunController::class, 'akun'])->name('akun');
 Route::get('/daftar', [DaftarController::class, 'daftar'])->name('daftar');
 
 Route::middleware('auth')->group(function () {

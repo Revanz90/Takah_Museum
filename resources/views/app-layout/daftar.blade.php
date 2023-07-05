@@ -19,57 +19,60 @@
 
 <body class="hold-transition register-page">
     <div class="register-box">
-        <div class="card card-outline card-primary">
+        <div class="card card-outline card-info">
             <div class="card-header text-center">
-                <a href="../../index2.html" class="h1"> Takah Museum</a>
+                <a href="" class="h1"> Takah Museum</a>
             </div>
             <div class="card-body">
                 <p class="login-box-msg">Registrasi Disini!</p>
 
-                <form action="../../index.html" method="post">
+                <form action="{{ route('register') }}" method="post">
+                    @csrf
+                    {{-- Name --}}
                     <div class="input-group mb-3">
-                        <input type="text" class="form-control" placeholder="Masukan Nama">
+                        <input type="text" class="form-control" id="name" name="name" required=""
+                            placeholder="Masukan Nama" required autofocus autocomplete="name">
                         <div class="input-group-append">
                             <div class="input-group-text">
                                 <span class="fas fa-user"></span>
                             </div>
                         </div>
                     </div>
+                    {{-- Email Address --}}
                     <div class="input-group mb-3">
-                        <input type="email" class="form-control" placeholder="Masukan Email">
+                        <input type="email" class="form-control" id="email" name="email"
+                            placeholder="Masukan Email" required autocomplete="username">
                         <div class="input-group-append">
                             <div class="input-group-text">
                                 <span class="fas fa-envelope"></span>
                             </div>
                         </div>
                     </div>
+                    {{-- password --}}
                     <div class="input-group mb-3">
-                        <input type="password" class="form-control" placeholder="Masukan Password">
+                        <input type="password" class="form-control" id="password" name="password"
+                            placeholder="Masukan Password" required autocomplete="new-password">
                         <div class="input-group-append">
                             <div class="input-group-text">
                                 <span class="fas fa-lock"></span>
                             </div>
                         </div>
                     </div>
+                    {{-- confirmation password --}}
                     <div class="input-group mb-3">
-                        <input type="password" class="form-control" placeholder="Konfirmasi Password">
+                        <input type="password" class="form-control" id="password_confirmation"
+                            name="password_confirmation" placeholder="Konfirmasi Password" required
+                            autocomplete="new-password">
                         <div class="input-group-append">
                             <div class="input-group-text">
                                 <span class="fas fa-lock"></span>
                             </div>
                         </div>
                     </div>
+                    {{-- Register Button --}}
                     <div class="row">
-                        <div class="col-8">
-                            <div class="icheck-primary">
-                                <input type="checkbox" id="agreeTerms" name="terms" value="agree">
-                                <label for="agreeTerms">
-                                    Saya Setuju
-                                </label>
-                            </div>
-                        </div>
-                        <div class="col-4">
-                            <button type="submit" class="btn btn-primary btn-block">Register</button>
+                        <div class="col-12 mt-3">
+                            <button type="submit" class="btn btn-info btn-block">Register</button>
                         </div>
                     </div>
                 </form>

@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Login</title>
+    <title> TAKAH Museum | Login</title>
 
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet"
@@ -20,7 +20,7 @@
 <body class="hold-transition login-page">
     <div class="login-box">
         <!-- /.login-logo -->
-        <div class="card card-outline card-dark">
+        <div class="card card-outline card-info">
             <div class="card-header text-center">
                 <a href="../../index2.html" class="h1">TAKAH<b>MUSEUM</b></a>
                 @include('app-layout/alert')
@@ -31,7 +31,7 @@
                 <form action="{{ route('login') }}" method="post">
                     @csrf
                     <div class="input-group mb-3">
-                        <input type="text" class="form-control" placeholder="Email" name="email">
+                        <input type="email" class="form-control" placeholder="Email" name="email">
                         <div class="input-group-append">
                             <div class="input-group-text">
                                 <span class="fas fa-envelope"></span>
@@ -56,14 +56,14 @@
                             </div>
                         </div>
                         <div class="col-6">
-                            <button type="submit" class="btn btn-primary btn-block">Log In</button>
+                            <button type="submit" class="btn btn-info btn-block">Log In</button>
                         </div>
                     </div>
 
                     <div class="row">
                         <div class="col-6">
                             <p class="mb-1 mt-1">
-                                <a href="forgot-password.blade.php">Forgot Password</a>
+                                <a href="{{ route('password.request') }}" class="text_muted">Forgot Password</a>
                             </p>
                         </div>
                         <div class="col-8">

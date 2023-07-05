@@ -15,7 +15,7 @@
                     alt="User Image">
             </div>
             <div class="info">
-                <a href="" class="d-block">Revanza Marsapala</a>
+                <a href="{{ route('profile.edit') }}" class="d-block">Revanza Marsapala</a>
             </div>
         </div>
 
@@ -57,7 +57,7 @@
                             Disposisi
                         </p>
                     </a>
-                </li>   
+                </li>
             </ul>
         </nav>
     </div>
