@@ -11,10 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('file_surat_masuks', function (Blueprint $table) {
+        Schema::create('roles', function (Blueprint $table) {
             $table->id();
-            $table->string('files');
-            $table->unsignedBigInteger('id_suratmasuk');
+            $table->string('role');
             $table->timestamps();
         });
     }
@@ -24,6 +23,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('file_surat_masuks');
+        Schema::dropIfExists('roles');
     }
 };
