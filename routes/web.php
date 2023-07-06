@@ -39,13 +39,19 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/surat_masuk', [SuratMasukController::class, 'suratmasuk'])->name('suratmasuk');
     Route::post('/surat_masuk', [SuratMasukController::class, 'store'])->name('storesuratmasuk');
-    Route::get('/detail_suratmasuk', [DetailSuratMasukController::class, 'detailsuratmasuk'])->name('detail_suratmasuk');
+    Route::get('/{id}/detail_suratmasuk', [DetailSuratMasukController::class, 'detailsuratmasuk'])->name('detail_suratmasuk');
+
+    // Route::get('/disposisi', [DisposisiController::class, 'disposisi'])->name('disposisi');
+    // Route::get('/action_disposisi', [ActionDisposisiController::class, 'action'])->name('action_disposisi');
+    
+    Route::get('/ditakahkan', [DitakahkanController::class, 'ditakahkan'])->name('ditakahkan');
 
     Route::get('/surat_keluar', [SuratKeluarController::class, 'suratkeluar'])->name('suratkeluar');
-    Route::get('/ditakahkan', [DitakahkanController::class, 'ditakahkan'])->name('ditakahkan');
+});
+
+Route::group(['middleware' => ['role:super-admin|admin|kamus']], function () {
     Route::get('/disposisi', [DisposisiController::class, 'disposisi'])->name('disposisi');
     Route::get('/action_disposisi', [ActionDisposisiController::class, 'action'])->name('action_disposisi');
-
 });
 
 require __DIR__ . '/auth.php';

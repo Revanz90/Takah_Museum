@@ -12,8 +12,8 @@ class SuratMasukController extends Controller
 {
     public function suratmasuk()
     {
-        $suratMasuk = SuratMasuk::all();
-        return view('layouts.surat_masuk', ['datasm' => $suratMasuk]);
+        $suratMasuk = SuratMasuk::all()->sortByDesc('created_at');
+        return view('layouts.surat_masuk', ['datas' => $suratMasuk]);
     }
 
     public function store(Request $request)
@@ -43,7 +43,7 @@ class SuratMasukController extends Controller
                 $fileName = $request->Input_SuratMasuk->getClientOriginalName();
 
                 // Menyimpan data pada storage local
-                Storage::putFileAs('files', $request->Input_SuratMasuk, $fileName);
+                Storage::putFileAs('public/files', $request->Input_SuratMasuk, $fileName);
                 // Menyimpan File pada database File Surat Masuk
                 $filesuratmasuk->files = $fileName;
                 $filesuratmasuk->id_suratmasuk = $suratmasuk->id;
