@@ -55,9 +55,9 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach($datas as $index => $data)
+                    @foreach($datas as $data)
                         <tr>
-                        <td>{{$index}}</td>
+                        <td>{{$data->id}}</td>
                         <td>{{$data->created_at}}</td>
                         <td>{{$data->dari}}</td>
                         <td>{{$data->no_surat}}</td>
@@ -65,7 +65,7 @@
                         <td>{{$data->keterangan}}</td>
                         <td class="project-state text-center">
                             <span class="badge badge-success">Diterima</span>
-                            <a class="btn btn-info btn-xs" href=" {{ route('detail_suratmasuk') }}">
+                            <a class="btn btn-info btn-xs" href=" {{ route('detail_suratmasuk', ['id'=>$data->id]) }}">
                                 <i class="fas fa-folder">
                                 </i>
                                 Lihat
