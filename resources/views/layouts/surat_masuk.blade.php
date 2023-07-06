@@ -4,13 +4,20 @@
 @section('title2', 'Surat Masuk')
 @section('judul', 'Surat Masuk')
 
+@section('page-js-files')
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+@stop
+
 @section('content')
+
 <section class="content">
     <div id="xtest" style="font-size: 14px"></div>
     <div class="callout callout-warning">
         <i class="fas fa-info-circle"></i>
         Halaman untuk melihat dan menambah surat masuk
     </div>
+
     @if ($message = Session::get('success'))
     <div class="alert alert-success alert-block">
         <button type="button" class="close" data-dismiss="alert">×</button>
@@ -24,6 +31,7 @@
         <strong>{{ $message }}</strong>
     </div>
     @endif
+
     <div class="card">
         <!-- Navbar Content -->
         <div class="card-header">
@@ -56,7 +64,7 @@
                 </thead>
                 <tbody>
                     @foreach($datas as $data)
-                        <tr>
+                    <tr>
                         <td>{{$data->id}}</td>
                         <td>{{$data->created_at}}</td>
                         <td>{{$data->dari}}</td>
