@@ -46,52 +46,50 @@
             </div>
             <!-- /Navbar Content -->
 
-            <!-- Page Content -->
-            <div class="card-body">
-                <table id="examplePolos" class="table table-bordered table-striped">
-                    <thead>
-                        <tr>
-                            <th>No</th>
-                            <th>Tanggal</th>
-                            <th>Dari</th>
-                            <th>No. Surat</th>
-                            <th>Perihal</th>
-                            <th>Keterangan</th>
-                            <th>Action</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach ($datas as $data)
-                            <tr>
-                                <td>{{ $data->id }}</td>
-                                <td>{{ $data->created_at }}</td>
-                                <td>{{ $data->dari }}</td>
-                                <td>{{ $data->no_surat }}</td>
-                                <td>{{ $data->perihal }}</td>
-                                <td>{{ $data->keterangan }}</td>
-                                <td class="project-state text-center">
-                                    <span
-                                        class="badge {{ $data->status == 'diterima' ? 'badge-success' : ($data->status == 'ditolak' ? 'badge-danger' : 'badge-secondary') }}">{{ Str::upper($data->status) }}</span>
-                                    <a class="btn btn-info btn-xs"
-                                        href=" {{ route('detail_suratmasuk', ['id' => $data->id]) }}">
-                                        <i class="fas fa-folder">
-                                        </i>
-                                        Lihat
-                                    </a>
-                                    <a class="btn btn-primary btn-xs mt-2" href=" {{ route('ditakahkan') }}">
-                                        <i class="fas fa-folder">
-                                        </i>
-                                        Takahkan
-                                    </a>
-                                </td>
-                                </td>
-                            </tr>
-                        @endforeach
-                    </tbody>
-                </table>
-            </div>
+        <!-- Page Content -->
+        <div class="card-body">
+            <table id="examplePolos" class="table table-bordered table-striped">
+                <thead>
+                    <tr>
+                        <th>No</th>
+                        <th>Tanggal</th>
+                        <th>Dari</th>
+                        <th>No. Surat</th>
+                        <th>Perihal</th>
+                        <th>Keterangan</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach($datas as $data)
+                    <tr>
+                        <td>{{$data->id}}</td>
+                        <td>{{$data->created_at}}</td>
+                        <td>{{$data->dari}}</td>
+                        <td>{{$data->no_surat}}</td>
+                        <td>{{$data->perihal}}</td>
+                        <td>{{$data->keterangan}}</td>
+                        <td class="project-state text-center">
+                            <span class="badge {{$data->status_surat_masuk}}">{{Str::upper($data->status)}}</span>
+                            <a class="btn btn-info btn-xs" href=" {{ route('detail_suratmasuk', ['id'=>$data->id]) }}">
+                                <i class="fas fa-folder">
+                                </i>
+                                Lihat
+                            </a>
+                            <a class="btn btn-primary btn-xs mt-2" href=" {{ route('ditakahkan') }}">
+                                <i class="fas fa-folder">
+                                </i>
+                                Takahkan
+                            </a>
+                        </td>
+                        </td>
+                    </tr>
+                    @endforeach
+                </tbody>
+            </table>
         </div>
-    </section>
+    </div>
+</section>
 
     <!-- Modal Surat Masuk -->
     <div class="modal fade" id="modal-default">
