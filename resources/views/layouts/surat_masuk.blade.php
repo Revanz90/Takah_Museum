@@ -72,7 +72,7 @@
                         <td>{{$data->perihal}}</td>
                         <td>{{$data->keterangan}}</td>
                         <td class="project-state text-center">
-                            <span class="badge {{$data->status == 'diterima' ? 'badge-success' :  ($data->status == 'ditolak' ? 'badge-danger' : 'badge-secondary')}}">{{Str::upper($data->status)}}</span>
+                            <span class="badge {{$data->status_surat_masuk}}">{{Str::upper($data->status)}}</span>
                             <a class="btn btn-info btn-xs" href=" {{ route('detail_suratmasuk', ['id'=>$data->id]) }}">
                                 <i class="fas fa-folder">
                                 </i>
