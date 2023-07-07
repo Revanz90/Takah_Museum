@@ -28,7 +28,5 @@
 <script src="{{ asset('AdminLTE/plugins') }}/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
 <!-- AdminLTE App -->
 <script src="{{ asset('AdminLTE/dist') }}/js/adminlte.js"></script>
-<!-- AdminLTE for demo purposes -->
-<script src="{{ asset('AdminLTE/dist') }}/js/demo.js"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <script src="{{ asset('AdminLTE/dist') }}/js/pages/dashboard.js"></script>

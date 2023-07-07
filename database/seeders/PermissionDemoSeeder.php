@@ -65,7 +65,7 @@ class PermissionDemoSeeder extends Seeder
         $superadminRole = Role::create(['name' => 'super-admin']);
         // gets all permissions via Gate::before rule
 
-        // create demo users
+        // create superadmintaud
         $user = User::factory()->create([
             'name' => 'SuperAdmin',
             'email' => 'superadmintaud@gmail.com',
@@ -73,6 +73,7 @@ class PermissionDemoSeeder extends Seeder
         ]);
         $user->assignRole($adminRole);
 
+        // create kamus
         $user = User::factory()->create([
             'name' => 'Revanza Marsapala',
             'email' => 'revanzamarsapala11@gmail.com',
@@ -80,6 +81,7 @@ class PermissionDemoSeeder extends Seeder
         ]);
         $user->assignRole($kamusRole);
 
+        // create admintaud
         $user = User::factory()->create([
             'name' => 'Admin Taud',
             'email' => 'admintaud@gmail.com',
@@ -87,6 +89,7 @@ class PermissionDemoSeeder extends Seeder
         ]);
         $user->assignRole($adminTaudRole);
 
+        // create stafftaud
         $user = User::factory()->create([
             'name' => 'Staff Taud ',
             'email' => 'stafftaud@gmail.com',
