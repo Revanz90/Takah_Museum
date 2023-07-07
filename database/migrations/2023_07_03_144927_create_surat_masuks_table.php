@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('no_surat');
             $table->string('perihal');
             $table->string('keterangan');
-            $table->enum('status', ['baru','diterima', 'ditolak'])->default('baru');
+            $table->enum('status', ['baru','ditakahkan','diterima', 'ditolak'])->default('baru');
             $table->unsignedBigInteger('author_id');
             $table->timestamps();
 
