@@ -11,8 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->foreign('role')->references('id')->on('roles');
+        Schema::create('divisi_museums', function (Blueprint $table) {
+            $table->id();
+            $table->string('divisi');
+            $table->timestamps();
         });
     }
 
@@ -21,6 +23,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        //
+        Schema::dropIfExists('divisi_museums');
     }
 };

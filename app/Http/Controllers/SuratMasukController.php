@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\FileSuratMasuk;
 use App\Models\SuratMasuk;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Route;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 
@@ -12,8 +13,8 @@ class SuratMasukController extends Controller
 {
     public function suratmasuk()
     {
-        $suratMasuk = SuratMasuk::all();
-        return view('layouts.surat_masuk', ['datasm' => $suratMasuk]);
+        $suratMasuk = SuratMasuk::all()->sortByDesc('created_at');
+        return view('layouts.surat_masuk', ['datas' => $suratMasuk]);
     }
 
     public function store(Request $request)
@@ -43,7 +44,7 @@ class SuratMasukController extends Controller
                 $fileName = $request->Input_SuratMasuk->getClientOriginalName();
 
                 // Menyimpan data pada storage local
-                Storage::putFileAs('files', $request->Input_SuratMasuk, $fileName);
+                Storage::putFileAs('public/files', $request->Input_SuratMasuk, $fileName);
                 // Menyimpan File pada database File Surat Masuk
                 $filesuratmasuk->files = $fileName;
                 $filesuratmasuk->id_suratmasuk = $suratmasuk->id;
@@ -54,5 +55,15 @@ class SuratMasukController extends Controller
         } catch (\Throwable $th) {
             return redirect()->back()->with('error', 'Gagal menambahkan Surat');
         }
+    }
+
+    public function updatesuratmasukditakahkan($id)
+    {
+        $data = SuratMasuk::find($id);
+        $data->status = 'ditakahkan';
+        $data->ditakahkan_at = now();
+        $data->save();
+
+        return redirect()->route('ditakahkan')->with('success','Berhasil DItakahkan');
     }
 }

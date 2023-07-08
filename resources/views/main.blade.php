@@ -34,4 +34,13 @@
     @yield('script')
 </body>
 
+<script type="text/javascript">
+    $("document").ready(function() {
+        setTimeout(function() {
+            $(".alert").remove();
+        }, 5000); // 5 secs
+
+    });
+</script>
+
 </html>

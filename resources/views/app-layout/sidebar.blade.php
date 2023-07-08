@@ -16,7 +16,7 @@
             </div>
             {{-- @foreach ($useractive as $username) --}}
             <div class="info">
-                <a href="" class="d-block">Revanza</a>
+                <a href="" class="d-block">{{ auth()->user()->name }}</a>
             </div>
             {{-- @endforeach --}}
         </div>
@@ -52,14 +52,16 @@
                         </p>
                     </a>
                 </li>
-                <li class="nav-item {{ request()->routeIs('disposisi') ? 'menu-open' : '' }}">
-                    <a href="{{ route('disposisi') }}" class="nav-link">
-                        <i class="nav-icon far fa-envelope"></i>
-                        <p>
-                            Disposisi
-                        </p>
-                    </a>
-                </li>
+                @hasrole('super-admin|admin|kamus')
+                    <li class="nav-item {{ request()->routeIs('disposisi') ? 'menu-open' : '' }}">
+                        <a href="{{ route('disposisi') }}" class="nav-link">
+                            <i class="nav-icon far fa-envelope"></i>
+                            <p>
+                                Disposisi
+                            </p>
+                        </a>
+                    </li>
+                @endhasrole
             </ul>
         </nav>
     </div>
