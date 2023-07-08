@@ -78,11 +78,13 @@
                                 </i>
                                 Lihat
                             </a>
+                            @if($data->ditakahkan_at == null)
                             <a class="btn btn-primary btn-xs mt-2" href=" {{ route('ditakahkan') }}">
                                 <i class="fas fa-folder">
                                 </i>
                                 Takahkan
                             </a>
+                            @endif
                         </td>
                         </td>
                     </tr>
