@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\FileSuratMasuk;
 use App\Models\SuratMasuk;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Route;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 
@@ -54,5 +55,15 @@ class SuratMasukController extends Controller
         } catch (\Throwable $th) {
             return redirect()->back()->with('error', 'Gagal menambahkan Surat');
         }
+    }
+
+    public function updatesuratmasukditakahkan($id)
+    {
+        $data = SuratMasuk::find($id);
+        $data->status = 'ditakahkan';
+        $data->ditakahkan_at = now();
+        $data->save();
+
+        return redirect()->route('ditakahkan')->with('success','Berhasil DItakahkan');
     }
 }
