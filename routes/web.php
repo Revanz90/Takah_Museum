@@ -6,7 +6,6 @@ use App\Http\Controllers\DaftarController;
 use App\Http\Controllers\DetailSuratMasukController;
 use App\Http\Controllers\DisposisiController;
 use App\Http\Controllers\DitakahkanController;
-use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SuratKeluarController;
 use App\Http\Controllers\SuratMasukController;
 use Illuminate\Support\Facades\Route;
@@ -30,9 +29,7 @@ Route::get('/', function () {
     return view('auth.login');
 });
 
-
-Route::get('/akun', [AkunController::class, 'akun'])->name('akun');
-
+Route::get('akun', [AkunController::class, 'akun'])->name('akun');
 Route::get('/daftar', [DaftarController::class, 'daftar'])->name('daftar');
 
 Route::middleware('auth')->group(function () {

@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\SuratMasuk;
 use App\Models\FileSuratMasuk;
+use App\Models\SuratMasuk;
 
 class DetailSuratMasukController extends Controller
 {
