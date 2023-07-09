@@ -6,10 +6,19 @@
 
 @section('content')
     <div id="xtest" style="font-size: 14px"></div>
-    <div class="callout callout-warning">
-        <i class="fas fa-info-circle"></i>
-        Halaman Disposisi
-    </div>
+    @if ($message = Session::get('success'))
+        <div class="alert alert-success alert-block">
+            <button type="button" class="close" data-dismiss="alert">×</button>
+            <strong>{{ $message }}</strong>
+        </div>
+    @endif
+
+    @if ($message = Session::get('error'))
+        <div class="alert alert-danger alert-block">
+            <button type="button" class="close" data-dismiss="alert">×</button>
+            <strong>{{ $message }}</strong>
+        </div>
+    @endif
 
     <div class="card">
         <!-- Navbar Content -->
@@ -41,23 +50,25 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>Kepala Museum (KAMUS)</td>
-                        <td>Surat izin berkunjung</td>
-                        <td>N - 13</td>
-                        <td class="project-actions text-center">
-                            <a class="btn btn-info btn-xs"
-                                href="https://ofes.itda.ac.id/Mahasiswa/Proposal/viewDetailPengajuan/38">
-                                <i class="fas fa-folder">
-                                </i>
-                                Disposisi
-                            </a>
-                        <td class="project-state text-center">
-                            <span class="badge badge-success">Diterima</span>
-                        </td>
-                        </td>
-                    </tr>
+                    @foreach ($datas as $data)
+                        <tr>
+                            <td>{{ $data->id }}</td>
+                            <td>Kepala Museum (KAMUS)</td>
+                            <td>{{ $data->pesan_disposisi }}</td>
+                            <td>N - {{ $data->id }}</td>
+                            <td class="project-actions text-center">
+                                <a class="btn btn-info btn-xs w-100"
+                                    href="https://ofes.itda.ac.id/Mahasiswa/Proposal/viewDetailPengajuan/38">
+                                    <i class="fas fa-folder">
+                                    </i>
+                                    Disposisi
+                                </a>
+                            <td class="project-state text-center">
+                                <div class="btn btn-xs bg-success w-100">Diterima</div>
+                            </td>
+                            </td>
+                        </tr>
+                    @endforeach
                 </tbody>
             </table>
         </div>
@@ -83,49 +94,66 @@
                             </div>
                             <!-- /Navbar Content -->
                             <!-- Page Content -->
-                            <form action="https://ofes.itda.ac.id/Mahasiswa/Proposal/addPengajuan"
-                                enctype="multipart/form-data" method="POST" class="form-horizontal">
+                            <form action="" enctype="multipart/form-data" method="POST" class="form-horizontal"
+                                id="simpandisposisi">
+                                {{ csrf_field() }}
                                 <div class="card-body">
                                     <div class="col-sm-12">
                                         <div class="card">
                                             <div class="card-body">
+                                                <div class="form-group row align-items-center">
+                                                    <label for=""
+                                                        class="col-sm-2 col-form-label font-weight-normal">Pilih
+                                                        Surat</label>
+                                                    <!-- Example split danger button -->
+                                                    <select class="form-select border"
+                                                        style="border-color: #ced4da !important;"
+                                                        aria-label="Default select example" name="suratmasuk_id">
+                                                        <option selected>Pilih Surat Masuk</option>
+                                                        @foreach ($datasm as $data)
+                                                            <option value="{{ $data->id }}">{{ $data->dari }}</option>
+                                                        @endforeach
+                                                    </select>
+                                                </div>
 
                                                 <div class="form-group row">
                                                     <div class="input-group">
                                                         <label for=""
                                                             class="col-sm-2 col-form-label font-weight-normal">Pesan
                                                             Disposisi</label>
-                                                        <textarea class="form-control" aria-label="With textarea" placeholder="Masukan pesan disposisi disini ..."></textarea>
+                                                        <textarea class="form-control" aria-label="With textarea" placeholder="Masukan pesan disposisi disini ..."
+                                                            name="pesan_disposisi"></textarea>
                                                     </div>
                                                 </div>
 
-                                                <div class="form-group row">
-                                                    <label for=""
-                                                        class="col-sm-2 col-form-label font-weight-normal">Status</label>
+                                                <div class="form-group row" name="status">
+                                                    <label class="col-sm-2 col-form-label font-weight-normal">Status</label>
                                                     <div class="form-check form-check-inline">
                                                         <input class="form-check-input" type="radio"
-                                                            name="inlineRadioOptions" id="inlineRadio1" value="option1">
+                                                            name="inlineRadioOptions" id="inlineRadio1" value="diterima">
                                                         <label class="form-check-label" for="inlineRadio1">Diterima</label>
                                                     </div>
                                                     <div class="form-check form-check-inline">
                                                         <input class="form-check-input" type="radio"
-                                                            name="inlineRadioOptions" id="inlineRadio2" value="option2">
+                                                            name="inlineRadioOptions" id="inlineRadio2" value="ditolak">
                                                         <label class="form-check-label" for="inlineRadio2">Ditolak</label>
                                                     </div>
                                                 </div>
 
-                                                <div class="form-group row">
+                                                <div class="form-group row align-items-center">
                                                     <label for=""
                                                         class="col-sm-2 col-form-label font-weight-normal">Teruskan
                                                         Ke</label>
                                                     <!-- Example split danger button -->
                                                     <div>
-                                                        <select class="form-select" aria-label="Default select example">
+                                                        <select class="form-select border"
+                                                            style="border-color: #ced4da !important;"
+                                                            aria-label="Default select example" name="tembusan_ke">
                                                             <option selected>Pilih Seksi</option>
-                                                            <option value="1">TAUD</option>
-                                                            <option value="2">BIMLUH</option>
-                                                            <option value="3">KOLEKSI</option>
-                                                            <option value="4">KONSERVASI</option>
+                                                            @foreach ($datadv as $data)
+                                                                <option value="{{ $data->id }}">{{ $data->divisi }}
+                                                                </option>
+                                                            @endforeach
                                                         </select>
                                                     </div>
                                                 </div>
@@ -145,7 +173,8 @@
                     <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
                     <div class="btn-savechange-reset">
                         <button type="reset" class="btn btn-sm btn-warning" style="margin-right: 5px">Reset</button>
-                        <button type="button" class="btn btn-primary">Submit</button>
+                        <button type="submit" form="simpandisposisi" value="Submit"
+                            class="btn btn-primary">Submit</button>
                     </div>
                 </div>
             </div>
