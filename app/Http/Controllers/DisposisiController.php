@@ -22,7 +22,6 @@ class DisposisiController extends Controller
     {
         try {
             $disposisi = new Disposisi();
-            // $suratmasuk = new SuratMasuk();
 
             // Validasi yang wajib diinputkan pada request payloads
             $validated = $request->validate([
@@ -36,12 +35,12 @@ class DisposisiController extends Controller
             $disposisi->suratmasuk_id = $request->input('suratmasuk_id');
             $disposisi->tembusan_ke = $request->input('tembusan_ke');
             $disposisi->author_id = Auth::id();
-            $disposisi->save();
+            
+            $datasm = SuratMasuk::find($request->suratmasuk_id);
+            $datasm->status = $request->status;
 
-            $data = SuratMasuk::find($request->input('suratmasuk_id'));
-            $data->status = $request->input('status');
-            $data->ditakahkan_at = now();
-            $data->save();
+            $disposisi->save();
+            $datasm->save();
 
             return redirect()->back()->with('success', 'Berhasil menambahkan Surat');
 
@@ -49,5 +48,10 @@ class DisposisiController extends Controller
             return redirect()->back()->with('error', 'Gagal menambahkan Surat');
         }
 
+    }
+
+    public function updateStatusSuratMasuk($id){
+
+        
     }
 }

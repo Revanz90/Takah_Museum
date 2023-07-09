@@ -50,21 +50,25 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($datas as $data)
+                    @foreach ($datasm as $data)
                         <tr>
-                            <td>{{ $data->id }}</td>
+                        <td>{{ $data->id }}</td>
                             <td>Kepala Museum (KAMUS)</td>
-                            <td>{{ $data->pesan_disposisi }}</td>
+                            <td>Dari : {{ $data->dari }},
+                                Nomor Surat : {{ $data->no_surat }},
+                                Tanggal : {{ $data->created_at }},
+                                Perihal : {{ $data->perihal }}</td>
                             <td>N - {{ $data->id }}</td>
                             <td class="project-actions text-center">
                                 <a class="btn btn-info btn-xs w-100"
-                                    href="https://ofes.itda.ac.id/Mahasiswa/Proposal/viewDetailPengajuan/38">
+                                    href="">
                                     <i class="fas fa-folder">
                                     </i>
                                     Disposisi
                                 </a>
                             <td class="project-state text-center">
-                                <div class="btn btn-xs bg-success w-100">Diterima</div>
+                            <div class="btn btn-xs {{ $data->status_surat_masuk }}">
+                                            {{ Str::upper($data->status) }}</div>
                             </td>
                             </td>
                         </tr>
@@ -129,14 +133,8 @@
                                                 <div class="form-group row" name="status">
                                                     <label class="col-sm-2 col-form-label font-weight-normal">Status</label>
                                                     <div class="form-check form-check-inline">
-                                                        <input class="form-check-input" type="radio"
-                                                            name="inlineRadioOptions" id="inlineRadio1" value="diterima">
-                                                        <label class="form-check-label" for="inlineRadio1">Diterima</label>
-                                                    </div>
-                                                    <div class="form-check form-check-inline">
-                                                        <input class="form-check-input" type="radio"
-                                                            name="inlineRadioOptions" id="inlineRadio2" value="ditolak">
-                                                        <label class="form-check-label" for="inlineRadio2">Ditolak</label>
+                                                        <input type="radio" name="status" value="diteruma"> Diterima
+                                                        <input type="radio" name="status" value="ditolak"> Ditolak
                                                     </div>
                                                 </div>
 
