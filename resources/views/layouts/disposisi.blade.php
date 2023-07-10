@@ -133,7 +133,7 @@
                                                 <div class="form-group row" name="status">
                                                     <label class="col-sm-2 col-form-label font-weight-normal">Status</label>
                                                     <div class="form-check form-check-inline">
-                                                        <input type="radio" name="status" value="diteruma"> Diterima
+                                                        <input type="radio" name="status" value="diterima"> Diterima
                                                         <input type="radio" name="status" value="ditolak"> Ditolak
                                                     </div>
                                                 </div>
