@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Disposisi;
 use App\Models\DivisiMuseum;
 use App\Models\SuratMasuk;
+use App\Models\Role;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -12,10 +13,11 @@ class DisposisiController extends Controller
 {
     public function disposisi()
     {
-        $suratmasuk = SuratMasuk::all();
-        $disposisi = Disposisi::all()->sortByDesc('created_at');
+        $suratmasuk = SuratMasuk::all()->sortByDesc('created_at');
+        $disposisi = Disposisi::all();
         $divisi = DivisiMuseum::all();
-        return view('layouts.disposisi', ['datas' => $disposisi, 'datasm' => $suratmasuk, 'datadv' => $divisi]);
+        $kpd = Role::where('name', 'kamus')->get();
+        return view('layouts.disposisi', ['datas' => $disposisi, 'datasm' => $suratmasuk, 'datadv' => $divisi, 'kepada' => $kpd]);
     }
 
     public function store(Request $request)
@@ -38,6 +40,7 @@ class DisposisiController extends Controller
             
             $datasm = SuratMasuk::find($request->suratmasuk_id);
             $datasm->status = $request->status;
+            $datasm->disposisi_at = now();
 
             $disposisi->save();
             $datasm->save();
