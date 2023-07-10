@@ -49,7 +49,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/ditakahkan', [DitakahkanController::class, 'ditakahkan'])->name('ditakahkan');
     // Route::post('/ditakahkan/{id}', [DitakahkanController::class, 'updatesuratmasukditakahkan'])->name('suratmasukditakahkan');
 
-    Route::get('/{id}/detail_disposisi', [DetailDisposisiController::class, 'detaildisposisi'])->name('detail_disposisi');
+    Route::post('/{id}/detail_disposisi', [DetailDisposisiController::class, 'detaildisposisi'])->name('detail_disposisi');
 
     Route::get('/surat_keluar', [SuratKeluarController::class, 'suratkeluar'])->name('suratkeluar');
 });

@@ -61,7 +61,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($datas as $data)
+                        @foreach ($datas as $index => $data)
                             <tr>
                                 <td>{{ $data->id }}</td>
                                 <td>{{ $data->created_at }}</td>
