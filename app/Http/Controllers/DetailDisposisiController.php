@@ -9,7 +9,8 @@ class DetailDisposisiController extends Controller
     public function detaildisposisi($id)
     {
         $data = Disposisi::find($id);
-        return view('layouts.detail_disposisi', ['datadisposisi' => $data]);
+        $dataview = Disposisi::all();
+        return view('layouts.detail_disposisi', ['data' => $data, 'dataview' => $dataview]);
 
     }
 }

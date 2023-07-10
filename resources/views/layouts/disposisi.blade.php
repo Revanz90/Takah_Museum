@@ -60,11 +60,10 @@
                                 Perihal : {{ $data->perihal }}</td>
                             <td>N - {{ $data->id }}</td>
                             <td class="project-actions text-center">
-                                <a class="btn btn-info btn-xs w-100" href=" {{ route('detail_disposisi') }}">
-                                    <i class="fas fa-folder">
-                                    </i>
-                                    Disposisi
-                                </a>
+                                <form method="POST" action="{{ route('detail_disposisi', ['id' => $data->id]) }}">
+                                    @csrf
+                                    <button class="btn btn-primary btn-xs w-100">Detail</button>
+                                </form>
                             <td class="project-state text-center">
                                 <div class="btn btn-xs {{ $data->status_surat_masuk }}">
                                     {{ Str::upper($data->status) }}</div>

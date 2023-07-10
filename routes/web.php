@@ -43,13 +43,9 @@ Route::middleware('auth')->group(function () {
     Route::post('/surat_masuk/{id}', [SuratMasukController::class, 'updatesuratmasukditakahkan'])->name('suratditakahkan');
     Route::get('/{id}/detail_suratmasuk', [DetailSuratMasukController::class, 'detailsuratmasuk'])->name('detail_suratmasuk');
 
-    // Route::get('/disposisi', [DisposisiController::class, 'disposisi'])->name('disposisi');
-    // Route::get('/action_disposisi', [ActionDisposisiController::class, 'action'])->name('action_disposisi');
-
     Route::get('/ditakahkan', [DitakahkanController::class, 'ditakahkan'])->name('ditakahkan');
-    // Route::post('/ditakahkan/{id}', [DitakahkanController::class, 'updatesuratmasukditakahkan'])->name('suratmasukditakahkan');
 
-    Route::get('/{id}/detail_disposisi', [DetailDisposisiController::class, 'detaildisposisi'])->name('detail_disposisi');
+    Route::post('/{id}/detail_disposisi', [DetailDisposisiController::class, 'detaildisposisi'])->name('detail_disposisi');
 
     Route::get('/surat_keluar', [SuratKeluarController::class, 'suratkeluar'])->name('suratkeluar');
 });
