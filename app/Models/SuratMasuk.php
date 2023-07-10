@@ -25,4 +25,9 @@ class SuratMasuk extends Model
         }
         return 'badge-secondary';
     }
+
+    public function disposisis()
+    {
+        return $this->hasMany(Disposisi::class, 'suratmasuk_id', 'id');
+    }
 }
