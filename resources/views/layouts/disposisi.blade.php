@@ -23,7 +23,7 @@
     <div class="card">
         <!-- Navbar Content -->
         <div class="card-header">
-            <h4 class="card-title font-weight-bold">DATA PENGAJUAN PROPOSAL</h4>
+            <h4 class="card-title font-weight-bold">DATA DISPOSISI</h4>
             <div class="card-tools">
                 <input type="hidden" name="xnull" id="statusxid[2]" value="2">
                 <div class="project-actions text-center">
@@ -52,7 +52,7 @@
                 <tbody>
                     @foreach ($datasm as $data)
                         <tr>
-                        <td>{{ $data->id }}</td>
+                            <td>{{ $data->id }}</td>
                             <td>Kepala Museum (KAMUS)</td>
                             <td>Dari : {{ $data->dari }},
                                 Nomor Surat : {{ $data->no_surat }},
@@ -60,15 +60,15 @@
                                 Perihal : {{ $data->perihal }}</td>
                             <td>N - {{ $data->id }}</td>
                             <td class="project-actions text-center">
-                                <a class="btn btn-info btn-xs w-100"
-                                    href="">
-                                    <i class="fas fa-folder">
-                                    </i>
-                                    Disposisi
-                                </a>
+                                @if ($data->disposisi_at != null)
+                                    <form method="POST" action="{{ route('detail_disposisi', ['id' => $data->id]) }}">
+                                        @csrf
+                                        <button class="btn btn-primary btn-xs w-100">Lihat Disposisi</button>
+                                    </form>
+                                @endif
                             <td class="project-state text-center">
-                            <div class="btn btn-xs {{ $data->status_surat_masuk }}">
-                                            {{ Str::upper($data->status) }}</div>
+                                <div class="btn btn-xs {{ $data->status_surat_masuk }}">
+                                    {{ Str::upper($data->status) }}</div>
                             </td>
                             </td>
                         </tr>
@@ -115,7 +115,10 @@
                                                         aria-label="Default select example" name="suratmasuk_id">
                                                         <option selected>Pilih Surat Masuk</option>
                                                         @foreach ($datasm as $data)
-                                                            <option value="{{ $data->id }}">{{ $data->dari }}</option>
+                                                            @if ($data->ditakahkan_at != null && $data->disposisi_at == null)
+                                                                <option value="{{ $data->id }}">{{ $data->dari }}
+                                                                </option>
+                                                            @endif
                                                         @endforeach
                                                     </select>
                                                 </div>
@@ -147,7 +150,7 @@
                                                         <select class="form-select border"
                                                             style="border-color: #ced4da !important;"
                                                             aria-label="Default select example" name="tembusan_ke">
-                                                            <option selected>Pilih Seksi</option>
+                                                            <option selected>Pilih Divisi</option>
                                                             @foreach ($datadv as $data)
                                                                 <option value="{{ $data->id }}">{{ $data->divisi }}
                                                                 </option>

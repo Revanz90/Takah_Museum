@@ -3,6 +3,8 @@
 use App\Http\Controllers\ActionDisposisiController;
 use App\Http\Controllers\AkunController;
 use App\Http\Controllers\DaftarController;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\DetailDisposisiController;
 use App\Http\Controllers\DetailSuratMasukController;
 use App\Http\Controllers\DisposisiController;
 use App\Http\Controllers\DitakahkanController;
@@ -21,7 +23,7 @@ use Illuminate\Support\Facades\Route;
 |
  */
 
-Route::get('/dashboard', function () {
+Route::get('/dashboard', [DashboardController::class, 'hitungsurat'], function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
@@ -42,11 +44,9 @@ Route::middleware('auth')->group(function () {
     Route::post('/surat_masuk/{id}', [SuratMasukController::class, 'updatesuratmasukditakahkan'])->name('suratditakahkan');
     Route::get('/{id}/detail_suratmasuk', [DetailSuratMasukController::class, 'detailsuratmasuk'])->name('detail_suratmasuk');
 
-    // Route::get('/disposisi', [DisposisiController::class, 'disposisi'])->name('disposisi');
-    // Route::get('/action_disposisi', [ActionDisposisiController::class, 'action'])->name('action_disposisi');
-
     Route::get('/ditakahkan', [DitakahkanController::class, 'ditakahkan'])->name('ditakahkan');
-    // Route::post('/ditakahkan/{id}', [DitakahkanController::class, 'updatesuratmasukditakahkan'])->name('suratmasukditakahkan');
+
+    Route::post('/{id}/detail_disposisi', [DetailDisposisiController::class, 'detaildisposisi'])->name('detail_disposisi');
 
     Route::get('/surat_keluar', [SuratKeluarController::class, 'suratkeluar'])->name('suratkeluar');
 });

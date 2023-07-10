@@ -2,13 +2,15 @@
 
 namespace App\Http\Controllers;
 use App\Models\SuratMasuk;
+use App\Models\Role;
 
 class DitakahkanController extends Controller
 {
     public function ditakahkan()
     {
         $suratMasuk = SuratMasuk::all()->sortByDesc('created_at');
-        return view('layouts.ditakahkan', ['datas' => $suratMasuk]);
+        $kpd = Role::where('name', 'kamus')->get();
+        return view('layouts.ditakahkan', ['datas' => $suratMasuk, 'kepada' => $kpd]);
     }
 
     public function updatesuratmasukditakahkan($id)

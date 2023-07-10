@@ -18,8 +18,8 @@ return new class extends Migration
             $table->string('perihal');
             $table->string('keterangan');
             $table->enum('status', ['baru','ditakahkan','diterima', 'ditolak'])->default('baru');
-            $table->string('id_takahkan')->nullable();
             $table->dateTime('ditakahkan_at')->nullable();
+            $table->dateTime('disposisi_at')->nullable();
             $table->unsignedBigInteger('author_id');
             $table->timestamps();
 

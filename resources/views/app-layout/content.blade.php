@@ -1,3 +1,5 @@
+@section('judul', 'Dashboard')
+
 <section class="col-lg-12">
     <div class="card">
         <div class="card-body">
@@ -17,22 +19,34 @@
         <!-- small box -->
         <div class="small-box bg-info">
             <div class="inner">
-                <h3>150</h3>
+                <h3>{{ $countsuratmasuk }}</h3>
                 <p>Surat Masuk</p>
             </div>
             <div class="icon">
-                <i class="ion ion-folder"></i>
+                <i class="ion ion-email"></i>
             </div>
             <a href="{{ route('suratmasuk') }}" class="small-box-footer">Lihat Info <i
                     class="fas fa-arrow-circle-right"></i></a>
         </div>
     </div>
     <div class="col-lg-3 col-6">
+        <div class="small-box bg-warning">
+            <div class="inner">
+                <h3>{{ $countditakahkan }}</h3>
+                <p>Surat Ditakahkan</p>
+            </div>
+            <div class="icon">
+                <i class=" ion ion-email"></i>
+            </div>
+            <a href="#" class="small-box-footer">Lihat Info <i class="fas fa-arrow-circle-right"></i></a>
+        </div>
+    </div>
+    <div class="col-lg-3 col-6">
         <!-- small box -->
         <div class="small-box bg-success">
             <div class="inner">
-                <h3>53<sup style="font-size: 20px">%</sup></h3>
-                <p>Surat Keluar</p>
+                <h3>{{ $countsuratditerima }}</h3>
+                <p>Surat Diterima</p>
             </div>
             <div class="icon">
                 <i class="ion ion-email"></i>
@@ -42,26 +56,14 @@
         </div>
     </div>
     <div class="col-lg-3 col-6">
-        <div class="small-box bg-warning">
-            <div class="inner">
-                <h3>44</h3>
-                <p>Total Surat</p>
-            </div>
-            <div class="icon">
-                <i class=" ion ion-stats-bars"></i>
-            </div>
-            <a href="#" class="small-box-footer">Lihat Info <i class="fas fa-arrow-circle-right"></i></a>
-        </div>
-    </div>
-    <div class="col-lg-3 col-6">
         <!-- small box -->
         <div class="small-box bg-danger">
             <div class="inner">
-                <h3>65</h3>
-                <p>Total Kunjungan</p>
+                <h3>{{ $countsuratditolak }}</h3>
+                <p>Surat Ditolak</p>
             </div>
             <div class="icon">
-                <i class="ion ion-pie-graph"></i>
+                <i class="ion ion ion-email"></i>
             </div>
             <a href="#" class="small-box-footer">Lihat Info <i class="fas fa-arrow-circle-right"></i></a>
         </div>
@@ -74,7 +76,7 @@
             <div class="row">
                 <div class="col-12">
                     <br>
-                    <h5><strong>Selamat datang, Revanza Marsapala</strong></h5>
+                    <h5><strong>Selamat datang, {{ auth()->user()->name }}</strong></h5>
                     <p>
                         Takah Museum merupakan aplikasi yang dapat digunakan untuk mengelola arsip dan dokumen
                         seperti surat masuk, surat keluar, arsip pegawa dan arsip organisasi. Menu yang di tampilkan

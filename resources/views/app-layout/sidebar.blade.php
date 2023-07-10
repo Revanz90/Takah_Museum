@@ -48,7 +48,7 @@
                     <a href="{{ route('ditakahkan') }}" class="nav-link">
                         <i class="nav-icon far fa-envelope"></i>
                         <p>
-                            Ditakahkan
+                            Tata Naskah
                         </p>
                     </a>
                 </li>
