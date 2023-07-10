@@ -1,8 +1,8 @@
 @extends('main')
 
-@section('title', 'Ditakahkan')
-@section('title2', 'Ditakahkan')
-@section('judul', 'Ditakahkan')
+@section('title', 'Tata Naskah')
+@section('title2', 'Tata Naskah')
+@section('judul', 'Tata Naskah')
 
 @section('content')
     <section class="content">

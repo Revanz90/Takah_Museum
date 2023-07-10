@@ -23,7 +23,7 @@
     <div class="card">
         <!-- Navbar Content -->
         <div class="card-header">
-            <h4 class="card-title font-weight-bold">DATA PENGAJUAN PROPOSAL</h4>
+            <h4 class="card-title font-weight-bold">DATA DISPOSISI</h4>
             <div class="card-tools">
                 <input type="hidden" name="xnull" id="statusxid[2]" value="2">
                 <div class="project-actions text-center">
@@ -52,7 +52,7 @@
                 <tbody>
                     @foreach ($datasm as $data)
                         <tr>
-                        <td>{{ $data->id }}</td>
+                            <td>{{ $data->id }}</td>
                             <td>Kepala Museum (KAMUS)</td>
                             <td>Dari : {{ $data->dari }},
                                 Nomor Surat : {{ $data->no_surat }},
@@ -60,15 +60,14 @@
                                 Perihal : {{ $data->perihal }}</td>
                             <td>N - {{ $data->id }}</td>
                             <td class="project-actions text-center">
-                                <a class="btn btn-info btn-xs w-100"
-                                    href="">
+                                <a class="btn btn-info btn-xs w-100" href=" {{ route('detail_disposisi') }}">
                                     <i class="fas fa-folder">
                                     </i>
                                     Disposisi
                                 </a>
                             <td class="project-state text-center">
-                            <div class="btn btn-xs {{ $data->status_surat_masuk }}">
-                                            {{ Str::upper($data->status) }}</div>
+                                <div class="btn btn-xs {{ $data->status_surat_masuk }}">
+                                    {{ Str::upper($data->status) }}</div>
                             </td>
                             </td>
                         </tr>
@@ -115,7 +114,8 @@
                                                         aria-label="Default select example" name="suratmasuk_id">
                                                         <option selected>Pilih Surat Masuk</option>
                                                         @foreach ($datasm as $data)
-                                                            <option value="{{ $data->id }}">{{ $data->dari }}</option>
+                                                            <option value="{{ $data->id }}">{{ $data->dari }}
+                                                            </option>
                                                         @endforeach
                                                     </select>
                                                 </div>
