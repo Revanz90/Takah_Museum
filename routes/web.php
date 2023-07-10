@@ -3,6 +3,7 @@
 use App\Http\Controllers\ActionDisposisiController;
 use App\Http\Controllers\AkunController;
 use App\Http\Controllers\DaftarController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DetailDisposisiController;
 use App\Http\Controllers\DetailSuratMasukController;
 use App\Http\Controllers\DisposisiController;
@@ -22,7 +23,7 @@ use Illuminate\Support\Facades\Route;
 |
  */
 
-Route::get('/dashboard', function () {
+Route::get('/dashboard', [DashboardController::class, 'hitungsurat'], function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
