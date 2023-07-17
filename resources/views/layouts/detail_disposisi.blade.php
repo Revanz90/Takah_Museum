@@ -18,7 +18,7 @@
             </div>
         </div>
         <div class="card-body">
-            <!-- <code>{{$data}}</code> -->
+            <!-- <code>{{$data->suratmasuk->dari}}</code> -->
                 <div class="form-group row">
                     <label for="" class="col-sm-2 col-form-label font-weight-normal">Asal Surat</label>
                     <div class="col-sm-10">
