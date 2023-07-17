@@ -38,7 +38,8 @@
             <div class="icon">
                 <i class=" ion ion-email"></i>
             </div>
-            <a href="#" class="small-box-footer">Lihat Info <i class="fas fa-arrow-circle-right"></i></a>
+            <a href="{{ route('ditakahkan') }}" class="small-box-footer">Lihat Info <i
+                    class="fas fa-arrow-circle-right"></i></a>
         </div>
     </div>
     <div class="col-lg-3 col-6">
@@ -51,8 +52,7 @@
             <div class="icon">
                 <i class="ion ion-email"></i>
             </div>
-            <a href="{{ route('suratkeluar') }}" class="small-box-footer">Lihat Info <i
-                    class="fas fa-arrow-circle-right"></i></a>
+            <a href="#" class="small-box-footer">Lihat Info <i class="fas fa-arrow-circle-right"></i></a>
         </div>
     </div>
     <div class="col-lg-3 col-6">
