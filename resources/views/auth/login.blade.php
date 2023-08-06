@@ -60,7 +60,7 @@
                         </div>
                     </div>
 
-                    <div class="row">
+                    {{-- <div class="row">
                         <div class="col-6">
                             <p class="mb-1 mt-1">
                                 <a href="{{ route('password.request') }}" class="text_muted">Forgot Password</a>
@@ -71,7 +71,7 @@
                                 <a href="{{ route('daftar') }}" class="text-center">Register</a>
                             </p>
                         </div>
-                    </div>
+                    </div> --}}
                 </form>
             </div>
         </div>

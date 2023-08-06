@@ -28,7 +28,7 @@ class SuratMasukController extends Controller
                 'no_surat' => 'required',
                 'perihal' => 'required',
                 'keterangan' => 'required',
-                'Input_SuratMasuk' => 'required',
+                'Input_SuratMasuk' => 'required|max:2048',
             ]);
 
             $suratmasuk->dari = $request->input('dari');

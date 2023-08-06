@@ -55,8 +55,10 @@
                     <label for="" class="col-sm-2 col-form-label font-weight-normal">Surat
                         Masuk File</label>
                     <div class="card-footer bg-white col-sm-10">
-                        <p><a href="{{ url('storage/files/' . $file->files) }}"
-                                class="mailbox-attachment-name"><u>{{ $file->files }}</u></a></p>
+                        {{-- <p><a href="{{ url('storage/files/' . $file->files) }}"
+                                class="mailbox-attachment-name"><u>{{ $file->files }}</u></a></p> --}}
+                        <embed type="application/pdf" src="{{ url('storage/files/' . $file->files) }}" id="pdf-embed"
+                            frameborder="0" width="100%" height="780">
                     </div>
                 </div>
             </form>
