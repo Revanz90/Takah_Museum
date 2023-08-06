@@ -3,11 +3,11 @@
 namespace Database\Seeders;
 
 use App\Models\User;
-use App\Models\DivisiMuseum;
 use Illuminate\Database\Seeder;
 use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\PermissionRegistrar;
+
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 class PermissionDemoSeeder extends Seeder
@@ -27,7 +27,6 @@ class PermissionDemoSeeder extends Seeder
         Permission::create(['name' => 'surat_masuk ditakahkan']);
         Permission::create(['name' => 'view diposisi']);
         Permission::create(['name' => 'create diposisi']);
-        
 
         //create roles and assign existing permissions
         $adminRole = Role::create(['name' => 'admin']);
@@ -37,7 +36,6 @@ class PermissionDemoSeeder extends Seeder
         $adminRole->givePermissionTo('surat_masuk ditakahkan');
         $adminRole->givePermissionTo('view diposisi');
         $adminRole->givePermissionTo('create diposisi');
-        
 
         $kamusRole = Role::create(['name' => 'kamus']);
         $kamusRole->givePermissionTo('view surat_masuk');
@@ -70,7 +68,7 @@ class PermissionDemoSeeder extends Seeder
         $user = User::factory()->create([
             'name' => 'SuperAdmin',
             'email' => 'superadmintaud@gmail.com',
-            'password' => bcrypt('12345678')
+            'password' => bcrypt('12345678'),
         ]);
         $user->assignRole($adminRole);
 
@@ -78,7 +76,7 @@ class PermissionDemoSeeder extends Seeder
         $user = User::factory()->create([
             'name' => 'Revanza Marsapala',
             'email' => 'revanzamarsapala11@gmail.com',
-            'password' => bcrypt('12345678')
+            'password' => bcrypt('12345678'),
         ]);
         $user->assignRole($kamusRole);
 
@@ -86,7 +84,7 @@ class PermissionDemoSeeder extends Seeder
         $user = User::factory()->create([
             'name' => 'Admin Taud',
             'email' => 'admintaud@gmail.com',
-            'password' => bcrypt('12345678')
+            'password' => bcrypt('12345678'),
         ]);
         $user->assignRole($adminTaudRole);
 
@@ -94,7 +92,7 @@ class PermissionDemoSeeder extends Seeder
         $user = User::factory()->create([
             'name' => 'Staff Taud ',
             'email' => 'stafftaud@gmail.com',
-            'password' => bcrypt('12345678')
+            'password' => bcrypt('12345678'),
         ]);
         $user->assignRole($stafftaudRole);
     }

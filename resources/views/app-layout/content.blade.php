@@ -30,24 +30,24 @@
         </div>
     </div>
     <div class="col-lg-3 col-6">
-        <div class="small-box bg-warning">
-            <div class="inner">
+        <div class="small-box bg-warning ">
+            <div class="inner text-white">
                 <h3>{{ $countditakahkan }}</h3>
                 <p>Surat Ditakahkan</p>
             </div>
             <div class="icon">
                 <i class=" ion ion-email"></i>
             </div>
-            <a href="{{ route('ditakahkan') }}" class="small-box-footer">Lihat Info <i
-                    class="fas fa-arrow-circle-right"></i></a>
+            <a href="{{ route('ditakahkan') }}" class="small-box-footer" style="color: #ffffff !important;">Lihat Info
+                <i class="fas fa-arrow-circle-right text-white"></i></a>
         </div>
     </div>
     <div class="col-lg-3 col-6">
         <!-- small box -->
         <div class="small-box bg-success">
             <div class="inner">
-                <h3>{{ $countsuratditerima }}</h3>
-                <p>Surat Diterima</p>
+                <h3>{{ $countsudahdisposisi }}</h3>
+                <p>Sudah Disposisi</p>
             </div>
             <div class="icon">
                 <i class="ion ion-email"></i>
@@ -59,8 +59,8 @@
         <!-- small box -->
         <div class="small-box bg-danger">
             <div class="inner">
-                <h3>{{ $countsuratditolak }}</h3>
-                <p>Surat Ditolak</p>
+                <h3>{{ $countbelumdisposisi }}</h3>
+                <p>Belum Disposisi</p>
             </div>
             <div class="icon">
                 <i class="ion ion ion-email"></i>

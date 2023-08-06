@@ -26,12 +26,12 @@
             <h4 class="card-title font-weight-bold">DATA DISPOSISI</h4>
             <div class="card-tools">
                 <input type="hidden" name="xnull" id="statusxid[2]" value="2">
-                <div class="project-actions text-center">
+                {{-- <div class="project-actions text-center">
                     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-default">
                         <i class="fas fa-plus"></i>
                         Disposisi
                     </button>
-                </div>
+                </div> --}}
             </div>
         </div>
         <!-- /Navbar Content -->
@@ -60,15 +60,22 @@
                                 Perihal : {{ $data->perihal }}</td>
                             <td>N - {{ $data->id }}</td>
                             <td class="project-actions text-center">
+                                @if ($data->disposisi_at == null)
+                                    <button type="button" class="btn btn-primary btn-xs p-1" data-toggle="modal"
+                                        onclick="showDisposisi({{ $data->id }})">
+                                        <i class="fas fa-plus"></i>
+                                        Disposisi
+                                    </button>
+                                @endif
                                 @if ($data->disposisi_at != null)
                                     <form method="POST" action="{{ route('detail_disposisi', ['id' => $data->id]) }}">
                                         @csrf
-                                        <button class="btn btn-primary btn-xs w-100">Lihat Disposisi</button>
+                                        <button class="btn btn-warning btn-xs w-100 text-white">Lihat Disposisi</button>
                                     </form>
                                 @endif
                             <td class="project-state text-center">
-                                <div class="btn btn-xs {{ $data->status_surat_masuk }}">
-                                    {{ Str::upper($data->status) }}</div>
+                                <div class="btn btn-xs {{ $data->status_surat_masuk }} p-1">
+                                    {{ ucfirst($data->status) }}</div>
                             </td>
                             </td>
                         </tr>
@@ -105,23 +112,9 @@
                                     <div class="col-sm-12">
                                         <div class="card">
                                             <div class="card-body">
-                                                <div class="form-group row align-items-center">
-                                                    <label for=""
-                                                        class="col-sm-2 col-form-label font-weight-normal">Pilih
-                                                        Surat</label>
-                                                    <!-- Example split danger button -->
-                                                    <select class="form-select border"
-                                                        style="border-color: #ced4da !important;"
-                                                        aria-label="Default select example" name="suratmasuk_id">
-                                                        <option selected>Pilih Surat Masuk</option>
-                                                        @foreach ($datasm as $data)
-                                                            @if ($data->ditakahkan_at != null && $data->disposisi_at == null)
-                                                                <option value="{{ $data->id }}">{{ $data->dari }}
-                                                                </option>
-                                                            @endif
-                                                        @endforeach
-                                                    </select>
-                                                </div>
+
+                                                <input type="hidden" id="surat-masuk-id" value=""
+                                                    name="suratmasuk_id">
 
                                                 <div class="form-group row">
                                                     <div class="input-group">
@@ -159,28 +152,75 @@
                                                     </div>
                                                 </div>
 
+                                                <div class="modal-footer justify-content-between">
+                                                    <button type="button" class="btn btn-danger"
+                                                        data-dismiss="modal">Close</button>
+                                                    <div class="btn-savechange-reset">
+                                                        <button type="reset" class="btn btn-sm btn-warning"
+                                                            style="margin-right: 5px">Reset</button>
+                                                        <button type="submit" form="simpandisposisi" value="Submit"
+                                                            class="btn btn-primary">Submit</button>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </form>
-                            <!-- /Page Content -->
-                        </div>
-                    </section>
-                </div>
-                <!-- /Main Content -->
 
-                <div class="modal-footer justify-content-between">
-                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                    <div class="btn-savechange-reset">
-                        <button type="reset" class="btn btn-sm btn-warning" style="margin-right: 5px">Reset</button>
-                        <button type="submit" form="simpandisposisi" value="Submit"
-                            class="btn btn-primary">Submit</button>
-                    </div>
+                            <form action="" enctype="multipart/form-data" method="GET" class="form-horizontal"
+                                id="simpandisposisi">
+                                {{ csrf_field() }}
+                                <div class="card-body">
+                                    <div class="col-sm-12">
+                                        <div class="card">
+                                            <h4 class="card-title font-weight-bold ml-3 mt-3">Surat Masuk</h4>
+                                            <div class="card-body">
+                                                <embed type="application/pdf" id="pdf-embed" frameborder="0"
+                                                    width="100%" height="780">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                        </div>
+                        </form>
+                        <!-- /Page Content -->
                 </div>
+                </section>
             </div>
+            <!-- /Main Content -->
+
         </div>
-        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-content -->
     </div>
     <!-- /.modal -->
+
+    <script type="text/javascript">
+        function showDisposisi(id) {
+            $('#surat-masuk-id').val(id)
+            $.ajax({
+                url: "{{ route('getpdf', ['id' => '_id']) }}".replace('_id', id),
+                method: 'GET',
+                success: function(pdfPath) {
+                    var pdfSrc = "{{ asset('storage/files') }}/" + pdfPath?.files;
+                    document.getElementById('pdf-embed').src = pdfSrc;
+                    $('#modal-default').modal('show');
+                },
+                error: function() {
+                    console.error('AJAX request error.'); // Debug message
+
+                    // Handle error, e.g., show an alert
+                }
+            });
+        }
+
+        // $.ajax({
+        //     url: url,
+        //     method: 'GET',
+        //     success: function(data) {
+        //         console.log(data)
+        //     }
+        // })
+    </script>
 @endsection

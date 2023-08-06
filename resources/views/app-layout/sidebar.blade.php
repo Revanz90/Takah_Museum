@@ -44,14 +44,16 @@
                         </p>
                     </a>
                 </li>
-                <li class="nav-item {{ request()->routeIs('ditakahkan') ? 'menu-open' : '' }}">
-                    <a href="{{ route('ditakahkan') }}" class="nav-link">
-                        <i class="nav-icon far fa-envelope"></i>
-                        <p>
-                            Tata Naskah
-                        </p>
-                    </a>
-                </li>
+                @hasrole('admintaud|stafftaud')
+                    <li class="nav-item {{ request()->routeIs('ditakahkan') ? 'menu-open' : '' }}">
+                        <a href="{{ route('ditakahkan') }}" class="nav-link">
+                            <i class="nav-icon far fa-envelope"></i>
+                            <p>
+                                Tata Naskah
+                            </p>
+                        </a>
+                    </li>
+                @endhasrole
                 @hasrole('super-admin|admin|kamus')
                     <li class="nav-item {{ request()->routeIs('disposisi') ? 'menu-open' : '' }}">
                         <a href="{{ route('disposisi') }}" class="nav-link">

@@ -10,9 +10,9 @@ class DashboardController extends Controller
     {
         $csuratmasuk = SuratMasuk::count();
         $cditakahkan = SuratMasuk::whereNotNull('ditakahkan_at')->get()->count();
-        $csuratditerima = SuratMasuk::where('status', 'diterima')->get()->count();
-        $csuratditolak = SuratMasuk::where('status', 'ditolak')->get()->count();
+        $csudahdisposisi = SuratMasuk::whereNotNull('disposisi_at')->get()->count();
+        $cbelumdisposisi = SuratMasuk::whereNull('disposisi_at')->get()->count();
 
-        return view('dashboard', ['countsuratmasuk' => $csuratmasuk, 'countditakahkan' => $cditakahkan, 'countsuratditerima' => $csuratditerima, 'countsuratditolak' => $csuratditolak]);
+        return view('dashboard', ['countsuratmasuk' => $csuratmasuk, 'countditakahkan' => $cditakahkan, 'countsudahdisposisi' => $csudahdisposisi, 'countbelumdisposisi' => $cbelumdisposisi]);
     }
 }

@@ -39,7 +39,7 @@
                     <div class="project-actions text-center">
                         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-default">
                             <i class="fas fa-plus"></i>
-                            TAMBAH
+                            Tambah
                         </button>
                     </div>
                 </div>
@@ -70,8 +70,8 @@
                                 <td>{{ $data->perihal }}</td>
                                 <td>{{ $data->keterangan }}</td>
                                 <td class="text-center d-flex flex-column align-items-stretch" style="gap: 4px">
-                                    <div class="btn btn-xs btn-info {{ $data->status_surat_masuk }}">
-                                        {{ Str::upper($data->status) }}</div>
+                                    <div class="btn btn-xs btn-info {{ $data->status_surat_masuk }} border-0">
+                                        {{ ucfirst($data->status) }}</div>
                                     <a class="btn btn-info btn-xs"
                                         href=" {{ route('detail_suratmasuk', ['id' => $data->id]) }}">
                                         <i class="fas fa-folder">
@@ -81,7 +81,7 @@
                                     @if ($data->ditakahkan_at == null)
                                         <form method="POST" action="{{ route('suratditakahkan', ['id' => $data->id]) }}">
                                             @csrf
-                                            <button class="btn btn-primary btn-xs w-100">Takahkan</button>
+                                            <button class="btn btn-xs w-100 border border-secondary">Takahkan</button>
                                         </form>
                                     @endif
                                 </td>

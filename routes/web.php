@@ -53,6 +53,7 @@ Route::middleware('auth')->group(function () {
 
 Route::group(['middleware' => ['role:super-admin|admin|kamus']], function () {
     Route::get('/disposisi', [DisposisiController::class, 'disposisi'])->name('disposisi');
+    Route::get('/{id}/disposisi', [DisposisiController::class, 'getpdf'])->name('getpdf');
     Route::post('/disposisi', [DisposisiController::class, 'store'])->name('store_disposisi');
     Route::get('/action_disposisi', [ActionDisposisiController::class, 'action'])->name('action_disposisi');
 });

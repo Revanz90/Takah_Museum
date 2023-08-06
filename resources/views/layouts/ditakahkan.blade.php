@@ -64,7 +64,7 @@
                                     @endif
                                 <td class="project-state text-center">
                                     <div class="btn btn-xs {{ $data->status_surat_masuk }}">
-                                        {{ Str::upper($data->status) }}
+                                        {{ ucfirst ($data->status) }}
                                     </div>
                                 </td>
                                 </td>
