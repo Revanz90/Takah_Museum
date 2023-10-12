@@ -21,7 +21,17 @@ Apa saja yang akan saya tambahkan disini :
 - Footer
   Footer merupakan bagian bawah pada website Anda dan selalu tampil di setiap halaman situs layaknya header. Bagian ini memberikan informasi yang biasanya menampilkan logo   perusahaan, menu, kontak, atau media sosial Anda.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## Fitur 
+- Login menggunakan username dan password yang dibuat langsung di dalam sistem
+- Menu Surat Masuk (Tambah surat masuk)
+- Menu Takahkan (Mentakahkan Surat masuk)
+- Menu Disposisi (Disposisi oleh Kepala Museum)
+- Profile (Perlu dikembangkan)
+
+## Tools
+- Laravel 10
+- AdminLTE
+- Bootstrap 5
 
 ## Aplikasi Takah Museum
 
