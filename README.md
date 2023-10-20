@@ -3,36 +3,33 @@
 
 ## About TAKAH MUSEUM
 
-Membuat sistem informasi Tata Naskah pada Museum Pusat TNI AU Dirgantara mandala berbasis Web sebagai Tugas Akhir / Skripsi. Judul Skripsi : ANALISA KORELASI PERANGKAT LUNAK TATA NASKAH (TAKAH) BERBASIS WEBSITE PADA MUSEUM PUSAT TNI AU DIRGANTARA MANDALA.
-Apa saja yang akan saya tambahkan disini :
-
-- Laravel Breeze
-  Laravel Breeze adalah implementasi minimal dan sederhana dari semua fitur autentikasi Laravel, termasuk login, registrasi, pengaturan ulang kata sandi, verifikasi email,   dan konfirmasi kata sandi. Selain itu, Breeze menyertakan halaman "profil" sederhana tempat pengguna dapat memperbarui nama, alamat email, dan sandi.
-  cara menginstall laravel breeze :
-  - composer require laravel/breeze --dev
-  - php artisan breeze:install
-  - php artisan migrate
-  - npm install
-  - npm run dev
-- Navbar
-  Navigasi bar atau navbar adalah nama yang disematkan untuk mendefinisikan sistem navigasi yang dikumpulkan pada satu bagian pada tampilan website. Definisi tersebut         kemudian tentu saja sama dengan tujuan yang dimiliki oleh navbar itu sendiri yakni membantu user dalam menemukan laman-laman yang mereka ingin akses.
-- Body 
-  Body disini berisi tentang informasi yang terdapat pada halaman website.
-- Footer
-  Footer merupakan bagian bawah pada website Anda dan selalu tampil di setiap halaman situs layaknya header. Bagian ini memberikan informasi yang biasanya menampilkan logo   perusahaan, menu, kontak, atau media sosial Anda.
+Creating a Web-based Mandala Dirgantara Air Force Central Museum as a Final Project/Thesis. Thesis Title: CORRELATION ANALYSIS OF WEBSITE-BASED MANUFACTURING SOFTWARE AT THE MANDALA AIR FORCE CENTER MUSEUM.
+What will I add here:
 
 ## Fitur 
-- Login menggunakan username dan password yang dibuat langsung di dalam sistem
-- Menu Surat Masuk (Tambah surat masuk)
-- Menu Takahkan (Mentakahkan Surat masuk)
-- Menu Disposisi (Disposisi oleh Kepala Museum)
-- Profile (Perlu dikembangkan)
+- Login using the username and password created directly in the system
+- Incoming Letter Menu (Add incoming letter)
+- Add Menu (Write Incoming Letters)
+- Disposition Menu (Disposition by the Head of the Museum)
+- Profile & settings menu (Needs to be developed)
 
 ## Tools
+- Php 8.2.4 you can user more or less.
+- composer 2.5.5
+- XAMPP
+- phpMyAdmin
 - Laravel 10
 - AdminLTE
 - Bootstrap 5
 
-## Aplikasi Takah Museum
+How to use this project, firts you have to install every tools above and clone this repository and save it on your local disk C or other. after that you have to open your XAMPP and start apache & mySQL, after running complete you have to open the repository after clone and open terminal and write  php artisan serve, after the link open you can click and show the website on your browser.
 
-Aplikasi Takah Museum dibangun untuk mengarsipkan surat masuk dan keluar yang terdapat pada museum Pusat TNI AU Dirgantara Mandala. Pada aplikasi Takah Museum ini dibuat 2 role utama yaitu Staf TAUD dan Kepala Museum (Kamus), pada role staf TAUD, staf dapat menambahkan surat masuk dan mentakahkan surat masuk tersebut kemudian pad role kepala museum, kepala museum dapat memberikan disposisi dari surat masuk yang telah ditambahkan dan ditakahkan oleh staf TAUD.
+- clone this repository
+- Download database
+- open XAMPP and start (Apache & mySQL) 
+- open in terminal & write (php artisan serve)
+- click link.
+  
+## What is Takah Museum
+
+The Takah Museum application was built to archive incoming and outgoing letters at the Dirgantara Mandala TNI AU Center museum. In the Takah Museum application, 2 main roles are created, namely TAUD Staff and Head of Museum chief (Kamus), in the TAUD staff role, staff can add incoming letters and certify the incoming letters. Then in the role of museum head chief, the museum head chief can provide disposition of the incoming letters that have been submitted. added and finalized by TAUD staff.
